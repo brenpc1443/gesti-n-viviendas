@@ -15,7 +15,7 @@ public class Propiedad {
     private Integer idPropiedad;
 
     @Column(name = "id_usuario")
-    private String idUsuario;
+    private Integer idUsuario;
 
     @Column(name = "nro_titulo")
     private String nroTitulo;
@@ -45,11 +45,11 @@ public class Propiedad {
         this.idPropiedad = idPropiedad;
     }
 
-    public String getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(String idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 

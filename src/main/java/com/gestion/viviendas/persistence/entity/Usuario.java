@@ -8,6 +8,11 @@ import java.util.List;
 @Table(name = "USUARIO")
 public class Usuario {
 
+    public enum Rol {
+        CLIENTE,
+        PROPIETARIO
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
@@ -25,7 +30,8 @@ public class Usuario {
 
     private String contraseña;
 
-    private String rol;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
 
     @OneToMany(mappedBy = "usuario")
     private List<Propiedad> propiedades;
@@ -81,11 +87,11 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
