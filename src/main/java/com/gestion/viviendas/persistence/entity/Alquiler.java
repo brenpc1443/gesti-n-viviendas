@@ -30,6 +30,14 @@ public class Alquiler {
     @Column(name = "fecha_fin")
     private LocalDateTime fechaFin;
 
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_propiedad", insertable = false, updatable = false)
+    private Propiedad propiedad;
+
     public Integer getIdAlquiler() {
         return idAlquiler;
     }

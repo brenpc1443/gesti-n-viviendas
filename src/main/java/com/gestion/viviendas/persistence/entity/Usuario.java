@@ -2,6 +2,8 @@ package com.gestion.viviendas.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "USUARIO")
 public class Usuario {
@@ -15,15 +17,21 @@ public class Usuario {
 
     private String apellido;
 
-    private Integer dni;
+    private String dni;
 
-    private Integer telefono;
+    private String telefono;
 
     private String direccion;
 
     private String contraseña;
 
     private String rol;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Propiedad> propiedades;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Alquiler> alquileres;
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -49,19 +57,19 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public Integer getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(Integer dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

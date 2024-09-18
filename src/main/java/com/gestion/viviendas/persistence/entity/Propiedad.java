@@ -2,6 +2,8 @@ package com.gestion.viviendas.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "PROPIEDAD")
 
@@ -16,7 +18,7 @@ public class Propiedad {
     private String idUsuario;
 
     @Column(name = "nro_titulo")
-    private Integer nroTitulo;
+    private String nroTitulo;
 
     private String descripcion;
 
@@ -28,6 +30,13 @@ public class Propiedad {
 
     private Integer capacidad;
 
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    private Usuario usuario;
+
+    @OneToMany(mappedBy = "propiedad")
+    private List<Alquiler> alquileres;
+
     public Integer getIdPropiedad() {
         return idPropiedad;
     }
@@ -36,20 +45,20 @@ public class Propiedad {
         this.idPropiedad = idPropiedad;
     }
 
-    public Integer getNroTitulo() {
-        return nroTitulo;
-    }
-
-    public void setNroTitulo(Integer nroTitulo) {
-        this.nroTitulo = nroTitulo;
-    }
-
     public String getIdUsuario() {
         return idUsuario;
     }
 
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public String getNroTitulo() {
+        return nroTitulo;
+    }
+
+    public void setNroTitulo(String nroTitulo) {
+        this.nroTitulo = nroTitulo;
     }
 
     public String getDescripcion() {
