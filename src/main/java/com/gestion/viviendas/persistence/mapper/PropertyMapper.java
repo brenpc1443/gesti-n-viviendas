@@ -29,5 +29,6 @@ public interface PropertyMapper {
     List<Property> toProperties(List<Propiedad> propiedades);
 
     @InheritInverseConfiguration
+    @Mapping(target = "alquileres", ignore = true)
     Propiedad toPropiedad(Property property);
 }

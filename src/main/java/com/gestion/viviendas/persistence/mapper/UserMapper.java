@@ -27,7 +27,7 @@ public interface UserMapper {
     List<User> toUsers(List<Usuario> usuarios);
 
     @InheritInverseConfiguration
-    @Mapping(target = "alquileres", ignore = true)
     @Mapping(target = "propiedades", ignore = true)
+    @Mapping(target = "alquileres", ignore = true)
     Usuario toUsuario(User user);
 }

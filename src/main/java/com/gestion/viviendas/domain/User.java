@@ -3,8 +3,8 @@ package com.gestion.viviendas.domain;
 public class User {
 
     public enum Rol {
-        CLIENT,
-        OWNER
+        CLIENTE,
+        PROPIETARIO
     }
 
     private int userId;

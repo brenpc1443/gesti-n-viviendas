@@ -102,4 +102,20 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
+
+    public List<Propiedad> getPropiedades() {
+        return propiedades;
+    }
+
+    public void setPropiedades(List<Propiedad> propiedades) {
+        this.propiedades = propiedades;
+    }
+
+    public List<Alquiler> getAlquileres() {
+        return alquileres;
+    }
+
+    public void setAlquileres(List<Alquiler> alquileres) {
+        this.alquileres = alquileres;
+    }
 }

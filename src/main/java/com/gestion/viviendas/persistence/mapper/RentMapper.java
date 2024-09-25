@@ -24,7 +24,7 @@ public interface RentMapper {
     })
 
     Rent toRent(Alquiler alquiler);
-    List<Rent> toRents(List<Alquiler> alquilers);
+    List<Rent> toRents(List<Alquiler> alquileres);
 
     @InheritInverseConfiguration
     Alquiler toAlquiler(Rent rent);

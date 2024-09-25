@@ -110,4 +110,20 @@ public class Propiedad {
     public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Alquiler> getAlquileres() {
+        return alquileres;
+    }
+
+    public void setAlquileres(List<Alquiler> alquileres) {
+        this.alquileres = alquileres;
+    }
 }

@@ -83,4 +83,20 @@ public class Alquiler {
     public void setFechaInicio(LocalDateTime fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Propiedad getPropiedad() {
+        return propiedad;
+    }
+
+    public void setPropiedad(Propiedad propiedad) {
+        this.propiedad = propiedad;
+    }
 }
