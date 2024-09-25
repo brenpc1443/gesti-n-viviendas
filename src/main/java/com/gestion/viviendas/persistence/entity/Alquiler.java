@@ -22,8 +22,6 @@ public class Alquiler {
 
     private Double costo;
 
-    private String estado;
-
     @Column(name = "fecha_inicio")
     private LocalDateTime fechaInicio;
 
@@ -68,14 +66,6 @@ public class Alquiler {
 
     public void setCosto(Double costo) {
         this.costo = costo;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public LocalDateTime getFechaFin() {

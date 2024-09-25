@@ -28,6 +28,8 @@ public class Propiedad {
 
     private String tipo;
 
+    private String estado;
+
     private Integer capacidad;
 
     @ManyToOne
@@ -91,6 +93,14 @@ public class Propiedad {
 
     public void setDisponibilidad(String disponibilidad) {
         this.disponibilidad = disponibilidad;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Integer getCapacidad() {

@@ -1,7 +1,10 @@
 package com.gestion.viviendas.persistence;
 
+import com.gestion.viviendas.domain.Property;
+import com.gestion.viviendas.domain.repository.PropertyRepository;
 import com.gestion.viviendas.persistence.crud.PropiedadCrudRepository;
 import com.gestion.viviendas.persistence.entity.Propiedad;
+import com.gestion.viviendas.persistence.mapper.PropertyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,42 +12,51 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class PropiedadRepository {
+public class PropiedadRepository implements PropertyRepository {
 
     @Autowired
     private PropiedadCrudRepository propiedadCrudRepository;
 
-    public List<Propiedad> getAll() {
-        return (List<Propiedad>) propiedadCrudRepository.findAll();
+    @Autowired
+    private PropertyMapper mapper;
+
+    @Override
+    public List<Property> getAll() {
+        List<Propiedad> propiedades = (List<Propiedad>) propiedadCrudRepository.findAll();
+        return mapper.toProperties(propiedades);
     }
 
-    public Optional<Propiedad> getById(int idPropiedad) {
-        return (Optional<Propiedad>) propiedadCrudRepository.findById(idPropiedad);
+    @Override
+    public Optional<Property> getById(int propertyId) {
+        return propiedadCrudRepository.findById(propertyId).map(propiedad -> mapper.toProperty(propiedad));
     }
 
-    public List<Propiedad> getByUsuario(int idUsuario) {
-        return propiedadCrudRepository.findByIdUsuario(idUsuario);
+    @Override
+    public Optional<List<Property>> getByUser(int userId) {
+        List<Propiedad> propiedades = propiedadCrudRepository.findByIdUsuario(userId);
+        return Optional.of(mapper.toProperties(propiedades));
     }
 
-    /*
-    public List<Propiedad> getByDisponibilidad(String disponibilidad) {
-        return propiedadCrudRepository.findByDisponibilidad(disponibilidad);
-    }
-    */
-
-    public List<Propiedad> getByCapacidadBetween(int min, int max) {
-        return propiedadCrudRepository.findByCapacidadBetween(min, max);
+    @Override
+    public Optional<List<Property>> getByCapacityBetween(int min, int max) {
+        List<Propiedad> propiedades = propiedadCrudRepository.findByCapacidadBetween(min, max);
+        return Optional.of(mapper.toProperties(propiedades));
     }
 
-    public List<Propiedad> getByTipo(String tipo) {
-        return propiedadCrudRepository.findByTipo(tipo);
+    @Override
+    public Optional<List<Property>> getByType(String type) {
+        List<Propiedad> propiedades = propiedadCrudRepository.findByTipo(type);
+        return Optional.of(mapper.toProperties(propiedades));
     }
 
-    public Propiedad save(Propiedad propiedad) {
-        return propiedadCrudRepository.save(propiedad);
+    @Override
+    public Property save(Property property) {
+        Propiedad propiedad = mapper.toPropiedad(property);
+        return mapper.toProperty(propiedadCrudRepository.save(propiedad));
     }
 
-    public void delete(int idPropiedad) {
-        propiedadCrudRepository.deleteById(idPropiedad);
+    @Override
+    public void delete(int propertyId) {
+        propiedadCrudRepository.deleteById(propertyId);
     }
 }
