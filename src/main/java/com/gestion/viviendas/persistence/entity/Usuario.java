@@ -1,5 +1,6 @@
 package com.gestion.viviendas.persistence.entity;
 
+import com.gestion.viviendas.persistence.type.RolUser;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -7,11 +8,6 @@ import java.util.List;
 @Entity
 @Table(name = "USUARIO")
 public class Usuario {
-
-    public enum Rol {
-        CLIENTE,
-        PROPIETARIO
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +27,7 @@ public class Usuario {
     private String contraseña;
 
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private RolUser rol;
 
     @OneToMany(mappedBy = "usuario")
     private List<Propiedad> propiedades;
@@ -87,11 +83,11 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public Rol getRol() {
+    public RolUser getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(RolUser rol) {
         this.rol = rol;
     }
 

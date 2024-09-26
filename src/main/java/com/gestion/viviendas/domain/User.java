@@ -1,11 +1,9 @@
 package com.gestion.viviendas.domain;
 
-public class User {
+import com.gestion.viviendas.persistence.entity.Usuario;
+import com.gestion.viviendas.persistence.type.RolUser;
 
-    public enum Rol {
-        CLIENTE,
-        PROPIETARIO
-    }
+public class User {
 
     private int userId;
     private String name;
@@ -14,7 +12,7 @@ public class User {
     private String phone;
     private String direction;
     private String password;
-    private Rol rol;
+    private RolUser rol;
 
     public int getUserId() {
         return userId;
@@ -72,11 +70,11 @@ public class User {
         this.password = password;
     }
 
-    public Rol getRol() {
+    public RolUser getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(RolUser rol) {
         this.rol = rol;
     }
 }

@@ -5,6 +5,7 @@ import com.gestion.viviendas.domain.repository.UserRepository;
 import com.gestion.viviendas.persistence.crud.UsuarioCrudRepository;
 import com.gestion.viviendas.persistence.entity.Usuario;
 import com.gestion.viviendas.persistence.mapper.UserMapper;
+import com.gestion.viviendas.persistence.type.RolUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -32,8 +33,8 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public Optional<List<User>> findByNombreOrApellido(String filtro) {
-        List<Usuario> usuarios = usuarioCrudRepository.findByNombreOrApellido(filtro);
+    public Optional<List<User>> findByNombreOrApellido(String name, String lastName) {
+        List<Usuario> usuarios = usuarioCrudRepository.findByNombreOrApellido(name, lastName);
         return Optional.of(mapper.toUsers(usuarios));
     }
 
@@ -44,7 +45,7 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public Optional<List<User>> getByRol(String rol) {
+    public Optional<List<User>> getByRol(RolUser rol) {
         List<Usuario> usuarios = usuarioCrudRepository.findByRol(rol);
         return Optional.of(mapper.toUsers(usuarios));
     }

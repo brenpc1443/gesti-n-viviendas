@@ -2,6 +2,7 @@ package com.gestion.viviendas.domain.service;
 
 import com.gestion.viviendas.domain.User;
 import com.gestion.viviendas.domain.repository.UserRepository;
+import com.gestion.viviendas.persistence.type.RolUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,21 +23,24 @@ public class UserService {
         return userRepository.getById(userId);
     }
 
-    public Optional<List<User>> findByNombreOrApellido(String filtro){
-        return userRepository.findByNombreOrApellido(filtro);
+    public Optional<List<User>> findByNombreOrApellido(String nombre, String apellido){
+        return userRepository.findByNombreOrApellido(
+                Optional.ofNullable(nombre).orElse(""),
+                Optional.ofNullable(apellido).orElse(""));
     }
 
     public Optional<User> getByDni(String dni){
         return userRepository.getByDni(dni);
     }
 
-    Optional<List<User>> getByRol(String rol){
+    public Optional<List<User>> getByRol(RolUser rol){
         return userRepository.getByRol(rol);
     }
 
     public User save(User user){
         return userRepository.save(user);
     }
+
     public boolean delete(int userId){
         return getById(userId).map(user -> {
             userRepository.delete(userId);
