@@ -1,6 +1,8 @@
 package com.gestion.viviendas.persistence.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
@@ -30,10 +32,12 @@ public class Alquiler {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "id_propiedad", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private Propiedad propiedad;
 
     public Integer getIdAlquiler() {
