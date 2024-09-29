@@ -2,6 +2,7 @@ package com.gestion.viviendas.domain.repository;
 
 import com.gestion.viviendas.domain.User;
 import com.gestion.viviendas.persistence.type.RolUser;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;
