@@ -49,7 +49,7 @@ public class UserController {
         return userService.getByRol(rol);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public User save(@RequestBody User user){
         return userService.save(user);
     }
