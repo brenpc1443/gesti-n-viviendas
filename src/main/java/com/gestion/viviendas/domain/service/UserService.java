@@ -46,6 +46,13 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User update(int userId, User user) {
+        return getById(userId).map(existingUser -> {
+            user.setUserId(userId);
+            return userRepository.save(user);
+        }).orElseThrow(() -> new RuntimeException("Usuario no encontrado con el ID: " + userId));
+    }
+
     public boolean delete(int userId){
         return getById(userId).map(user -> {
             userRepository.delete(userId);
