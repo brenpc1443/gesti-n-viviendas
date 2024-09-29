@@ -4,6 +4,7 @@ import com.gestion.viviendas.domain.User;
 import com.gestion.viviendas.domain.service.UserService;
 import com.gestion.viviendas.persistence.type.RolUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +23,12 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public boolean existsByTelefonoAndContrasena(@RequestParam(value = "telefono") String phone, @RequestParam(value = "contrasena") String password){
-        return userService.existsByTelefonoAndContraseña(phone, password);
+    public ResponseEntity<Boolean> existsByTelefonoAndContraseña(@RequestParam(value = "telefono") String phone, @RequestParam(value = "contrasena") String password){
+        if (phone == null || password == null) {
+            return ResponseEntity.badRequest().body(false);
+        }
+        boolean exists = userService.existsByTelefonoAndContraseña(phone, password);
+        return ResponseEntity.ok(exists);
     }
 
     @GetMapping("/{id}")
