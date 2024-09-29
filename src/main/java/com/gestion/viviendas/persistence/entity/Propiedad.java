@@ -1,6 +1,8 @@
 package com.gestion.viviendas.persistence.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class Propiedad {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private Usuario usuario;
 
     @OneToMany(mappedBy = "propiedad")

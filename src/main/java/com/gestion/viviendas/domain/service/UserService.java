@@ -19,6 +19,10 @@ public class UserService {
         return userRepository.getAll();
     }
 
+    public boolean existsByTelefonoAndContraseña(String phone, String password){
+        return userRepository.existsByTelefonoAndContraseña(phone, password);
+    }
+
     public Optional<User> getById(int userId){
         return userRepository.getById(userId);
     }

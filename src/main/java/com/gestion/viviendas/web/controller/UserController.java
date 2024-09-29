@@ -21,6 +21,11 @@ public class UserController {
         return userService.getAll();
     }
 
+    @GetMapping("/login")
+    public boolean existsByTelefonoAndContraseña(@RequestParam(value = "telefono") String phone, @RequestParam(value = "contraseña") String password){
+        return userService.existsByTelefonoAndContraseña(phone, password);
+    }
+
     @GetMapping("/{id}")
     public Optional<User> getById(@PathVariable("id") int userId){
         return userService.getById(userId);
@@ -44,12 +49,12 @@ public class UserController {
         return userService.getByRol(rol);
     }
 
-    @GetMapping("/save")
+    @PostMapping("/")
     public User save(@RequestBody User user){
         return userService.save(user);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int userId){
         return userService.delete(userId);
     }
