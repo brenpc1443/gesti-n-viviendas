@@ -1,6 +1,5 @@
 package com.gestion.viviendas.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -26,11 +25,9 @@ public class Alquiler {
     private Double costo;
 
     @Column(name = "fecha_inicio")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fechaInicio;
 
     @Column(name = "fecha_fin")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fechaFin;
 
     @ManyToOne
