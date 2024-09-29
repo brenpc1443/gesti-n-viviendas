@@ -28,6 +28,11 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
+    public boolean existsByTelefonoAndContraseña(String phone, String password) {
+        return usuarioCrudRepository.existsByTelefonoAndContraseña(phone, password);
+    }
+
+    @Override
     public Optional<User> getById(int userId) {
         return usuarioCrudRepository.findById(userId).map(user -> mapper.toUser(user));
     }

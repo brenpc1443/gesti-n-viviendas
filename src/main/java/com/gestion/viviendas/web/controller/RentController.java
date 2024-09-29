@@ -44,12 +44,12 @@ public class RentController {
         return rentService.findByFechaInicioAfter(currentDateTime);
     }
 
-    @GetMapping("/save")
+    @PostMapping("/")
     public Rent save(@RequestBody Rent rent){
         return rentService.save(rent);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int rentId){
         return rentService.delete(rentId);
     }

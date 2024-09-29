@@ -43,12 +43,12 @@ public class PropertyController {
         return propertyService.getByType(type);
     }
 
-    @GetMapping("/save")
+    @PostMapping("/")
     public Property save(@RequestBody Property property) {
         return propertyService.save(property);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int idProperty) {
         return propertyService.delete(idProperty);
     }
