@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public boolean existsByTelefonoAndContraseña(@RequestParam(value = "telefono") String phone, @RequestParam(value = "contraseña") String password){
+    public boolean existsByTelefonoAndContrasena(@RequestParam(value = "telefono") String phone, @RequestParam(value = "contraseña") String password){
         return userService.existsByTelefonoAndContraseña(phone, password);
     }
 
