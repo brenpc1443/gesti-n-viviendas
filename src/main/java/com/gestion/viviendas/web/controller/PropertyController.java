@@ -48,6 +48,11 @@ public class PropertyController {
         return propertyService.save(property);
     }
 
+    @PutMapping("/{id}")
+    public Property update(@PathVariable("id") int idProperty, @RequestBody Property property) {
+        return propertyService.update(idProperty, property);
+    }
+
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int idProperty) {
         return propertyService.delete(idProperty);

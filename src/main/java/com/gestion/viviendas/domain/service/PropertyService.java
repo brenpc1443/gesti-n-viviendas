@@ -38,6 +38,13 @@ public class PropertyService {
         return propertyRepository.save(property);
     }
 
+    public Property update(int propertyId, Property property) {
+        return getById(propertyId).map(existingProperty -> {
+            property.setPropertyId(propertyId);
+            return propertyRepository.save(property);
+        }).orElseThrow(() -> new RuntimeException("Property not found"));
+    }
+
     public boolean delete(int propertyId) {
         return getById(propertyId).map(property -> {
             propertyRepository.delete(propertyId);
