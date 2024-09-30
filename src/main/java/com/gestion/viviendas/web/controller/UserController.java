@@ -23,22 +23,12 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<User> findByTelefonoAndContraseña(
+    public Optional<User> findByTelefonoAndContraseña(
             @RequestParam(value = "telefono") String phone,
-            @RequestParam(value = "contrasena") String password) {
-        if (phone == null || password == null) {
-            return ResponseEntity.badRequest().body(null);
-        }
-
-        Optional<User> user = userService.findByTelefonoAndContraseña(phone, password);
-
-        if (user.isPresent()) {
-            return ResponseEntity.ok(user.get());
-        } else {
-            return ResponseEntity.status(404).body(null);
-        }
+            @RequestParam(value = "contrasena") String password
+    ){
+        return userService.findByTelefonoAndContraseña(phone, password);
     }
-
 
     @GetMapping("/{id}")
     public Optional<User> getById(@PathVariable("id") int userId){
