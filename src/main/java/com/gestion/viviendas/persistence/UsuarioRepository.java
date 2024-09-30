@@ -28,8 +28,8 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public Optional<User> findByTelefonoAndContraseña(String phone, String password) {
-        return usuarioCrudRepository.findByTelefonoAndContraseña(phone, password);
+    public boolean existsByTelefonoAndContraseña(String phone, String password) {
+        return usuarioCrudRepository.existsByTelefonoAndContraseña(phone, password);
     }
 
     @Override
