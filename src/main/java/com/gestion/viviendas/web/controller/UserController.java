@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public Optional<User> findByTelefonoAndContraseña(
+    public Optional<List<User>> findByTelefonoAndContraseña(
             @RequestParam(value = "telefono") String phone,
             @RequestParam(value = "contrasena") String password
     ){
