@@ -20,7 +20,7 @@ public class UserService {
         return userRepository.getAll();
     }
 
-    public Optional<List<User>> findByTelefonoAndContraseña(String phone, String password) {
+    public Optional<User> findByTelefonoAndContraseña(String phone, String password) {
         return userRepository.findByTelefonoAndContraseña(phone, password);
     }
 

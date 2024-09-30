@@ -23,11 +23,20 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public Optional<List<User>> findByTelefonoAndContraseña(
+    public ResponseEntity<User> findByTelefonoAndContraseña(
             @RequestParam(value = "telefono") String phone,
-            @RequestParam(value = "contrasena") String password
-    ){
-        return userService.findByTelefonoAndContraseña(phone, password);
+            @RequestParam(value = "contrasena") String password) {
+        if (phone == null || password == null) {
+            return ResponseEntity.badRequest().body(null); // Respuesta sin contenido
+        }
+
+        Optional<User> user = userService.findByTelefonoAndContraseña(phone, password);
+
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get()); // Retorna el usuario encontrado
+        } else {
+            return ResponseEntity.status(404).body(null); // Retorna 404 si no se encuentra el usuario
+        }
     }
 
     @GetMapping("/{id}")
@@ -43,7 +52,7 @@ public class UserController {
         return userService.findByNombreOrApellido(nombre, apellido);
     }
 
-    @GetMapping("/dni/{dni}")
+        @GetMapping("/dni/{dni}")
     public Optional<User> getByDni(@PathVariable("dni") String dni){
         return userService.getByDni(dni);
     }
