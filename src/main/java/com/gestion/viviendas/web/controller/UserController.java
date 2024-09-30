@@ -23,9 +23,11 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<?> findByTelefonoAndContraseña(@RequestParam(value = "telefono") String phone, @RequestParam(value = "contrasena") String password) {
+    public ResponseEntity<User> findByTelefonoAndContraseña(
+            @RequestParam(value = "telefono") String phone,
+            @RequestParam(value = "contrasena") String password) {
         if (phone == null || password == null) {
-            return ResponseEntity.badRequest().body("Teléfono y contraseña son requeridos.");
+            return ResponseEntity.badRequest().body(null);
         }
 
         Optional<User> user = userService.findByTelefonoAndContraseña(phone, password);
@@ -33,9 +35,10 @@ public class UserController {
         if (user.isPresent()) {
             return ResponseEntity.ok(user.get());
         } else {
-            return ResponseEntity.status(404).body("Usuario no encontrado.");
+            return ResponseEntity.status(404).body(null);
         }
     }
+
 
     @GetMapping("/{id}")
     public Optional<User> getById(@PathVariable("id") int userId){
