@@ -20,8 +20,8 @@ public class UserService {
         return userRepository.getAll();
     }
 
-    public boolean existsByTelefonoAndContraseña(String phone, String password){
-        return userRepository.existsByTelefonoAndContraseña(phone, password);
+    public Optional<User> findByTelefonoAndContraseña(String phone, String password) {
+        return userRepository.findByTelefonoAndContraseña(phone, password);
     }
 
     public Optional<User> getById(int userId){

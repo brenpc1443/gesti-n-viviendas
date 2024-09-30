@@ -23,12 +23,18 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<Boolean> existsByTelefonoAndContraseña(@RequestParam(value = "telefono") String phone, @RequestParam(value = "contrasena") String password){
+    public ResponseEntity<?> findByTelefonoAndContraseña(@RequestParam(value = "telefono") String phone, @RequestParam(value = "contrasena") String password) {
         if (phone == null || password == null) {
-            return ResponseEntity.badRequest().body(false);
+            return ResponseEntity.badRequest().body("Teléfono y contraseña son requeridos.");
         }
-        boolean exists = userService.existsByTelefonoAndContraseña(phone, password);
-        return ResponseEntity.ok(exists);
+
+        Optional<User> user = userService.findByTelefonoAndContraseña(phone, password);
+
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.status(404).body("Usuario no encontrado.");
+        }
     }
 
     @GetMapping("/{id}")
