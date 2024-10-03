@@ -29,7 +29,7 @@ public class UsuarioRepository implements UserRepository {
 
     @Override
     public Optional<User> getByTelefonoAndContrasena(String phone, String password) {
-        Usuario usuario = usuarioCrudRepository.findByTelefonoAndContrasena(phone, password);
+        Usuario usuario = usuarioCrudRepository.findByTelefonoAndContraseña(phone, password);
         return Optional.of(mapper.toUser(usuario));
     }
 
