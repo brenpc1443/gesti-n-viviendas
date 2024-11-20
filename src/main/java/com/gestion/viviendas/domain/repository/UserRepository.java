@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserRepository {
 
     List<User> getAll();
-    boolean existsByTelefonoAndContraseña(String phone, String password);
+    Optional <User> getByTelefonoAndContrasena(String telefono, String contrasena);
     Optional<User> getById(int userId);
     Optional<List<User>> findByNombreOrApellido(String name, String lastName);
     Optional<User> getByDni(String dni);

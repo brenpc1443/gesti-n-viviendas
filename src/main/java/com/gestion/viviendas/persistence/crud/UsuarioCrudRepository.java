@@ -11,7 +11,7 @@ public interface UsuarioCrudRepository extends CrudRepository<Usuario, Integer>{
 
     List<Usuario> findByNombreOrApellido(String nombre, String apellido);
 
-    boolean existsByTelefonoAndContraseña(String telefono, String apellido);
+    Usuario findByTelefonoAndContraseña(String telefono, String apellido);
 
     Usuario findByDni(String dni);
 

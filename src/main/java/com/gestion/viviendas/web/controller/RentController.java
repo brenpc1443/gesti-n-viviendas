@@ -48,6 +48,10 @@ public class RentController {
     public Rent save(@RequestBody Rent rent){
         return rentService.save(rent);
     }
+    @PutMapping("/{id}")
+    public Rent update(@PathVariable("id") int rentId, @RequestBody Rent rent){
+        return rentService.update(rentId, rent);
+    }
 
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable("id") int rentId){

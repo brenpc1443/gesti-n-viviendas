@@ -28,8 +28,9 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public boolean existsByTelefonoAndContraseña(String phone, String password) {
-        return usuarioCrudRepository.existsByTelefonoAndContraseña(phone, password);
+    public Optional<User> getByTelefonoAndContrasena(String phone, String password) {
+        Usuario usuario = usuarioCrudRepository.findByTelefonoAndContraseña(phone, password);
+        return Optional.of(mapper.toUser(usuario));
     }
 
     @Override
