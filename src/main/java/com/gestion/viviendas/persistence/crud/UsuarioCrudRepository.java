@@ -6,14 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UsuarioCrudRepository extends CrudRepository<Usuario, Integer>{
 
-    List<Usuario> findByNombreOrApellido(String nombre, String apellido);
-
-    boolean existsByTelefonoAndContraseña(String telefono, String apellido);
-
-    Usuario findByDni(String dni);
-
-    List<Usuario> findByRol(RolUser rol);
+    Optional<Usuario> findByNombreUsuarioAndContraseña(String nombreUsuario, String contraseña);
+    Optional<Usuario> findById(int id);
 }
