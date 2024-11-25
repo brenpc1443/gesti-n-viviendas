@@ -38,14 +38,12 @@ public class PropiedadRepository implements PropertyRepository {
     }
 
     @Override
-    public Optional<List<Property>> getByCapacityBetween(int min, int max) {
-        List<Propiedad> propiedades = propiedadCrudRepository.findByCapacidadBetween(min, max);
-        return Optional.of(mapper.toProperties(propiedades));
-    }
-
-    @Override
-    public Optional<List<Property>> getByType(String type) {
-        List<Propiedad> propiedades = propiedadCrudRepository.findByTipo(type);
+    public Optional<List<Property>> filter(Double precio,
+            String ciudad,
+            String tipo,
+            Integer capacidad,
+            Integer nroHabitaciones) {
+        List<Propiedad> propiedades = propiedadCrudRepository.filter(precio, ciudad, tipo, capacidad, nroHabitaciones);
         return Optional.of(mapper.toProperties(propiedades));
     }
 

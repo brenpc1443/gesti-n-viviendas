@@ -17,11 +17,19 @@ public interface PropertyMapper {
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "nroTitulo", target = "nroTitle"),
             @Mapping(source = "descripcion", target = "description"),
-            @Mapping(source = "direccion", target = "direction"),
+            @Mapping(source = "ciudad", target = "city"),
+            @Mapping(source = "ubicacion", target = "ubication"),
+            @Mapping(source = "precio", target = "price"),
             @Mapping(source = "disponibilidad", target = "availability"),
+            @Mapping(source = "imagen", target = "image"),
             @Mapping(source = "tipo", target = "type"),
             @Mapping(source = "capacidad", target = "capacity"),
+<<<<<<< HEAD
             @Mapping(source = "estado", target = "state"),
+=======
+            @Mapping(source = "nroHabitaciones", target = "nRooms"),
+            @Mapping(source = "caractAdicionales", target = "additioFeatures"),
+>>>>>>> origin/usuario-renta-merge
             @Mapping(source = "usuario", target = "user"),
     })
 

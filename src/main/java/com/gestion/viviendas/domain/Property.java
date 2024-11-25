@@ -6,11 +6,15 @@ public class Property {
     private int userId;
     private String nroTitle;
     private String description;
-    private String direction;
+    private String city;
+    private String ubication;
+    private Boolean price;
     private String availability;
+    private String image;
     private String type;
     private int capacity;
-    private String state;
+    private int nRooms;
+    private String additioFeatures;
     private User user;
 
     public int getPropertyId() {
@@ -44,12 +48,28 @@ public class Property {
         this.description = description;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getCity() {
+        return city;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getUbication() {
+        return ubication;
+    }
+
+    public void setUbication(String ubication) {
+        this.ubication = ubication;
+    }
+
+    public Boolean getPrice() {
+        return price;
+    }
+
+    public void setPrice(Boolean price) {
+        this.price = price;
     }
 
     public String getAvailability() {
@@ -68,12 +88,12 @@ public class Property {
         this.type = type;
     }
 
-    public String getState() {
-        return state;
+    public String getImage() {
+        return image;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getCapacity() {
@@ -82,6 +102,22 @@ public class Property {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public String getAdditioFeatures() {
+        return additioFeatures;
+    }
+
+    public void setAdditioFeatures(String additioFeatures) {
+        this.additioFeatures = additioFeatures;
+    }
+
+    public int getnRooms() {
+        return nRooms;
+    }
+
+    public void setnRooms(int nRooms) {
+        this.nRooms = nRooms;
     }
 
     public User getUser() {

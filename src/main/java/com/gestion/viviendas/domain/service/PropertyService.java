@@ -26,16 +26,26 @@ public class PropertyService {
         return propertyRepository.getByUser(userId);
     }
 
-    public Optional<List<Property>> getByCapacityBetween(int min, int max) {
-        return propertyRepository.getByCapacityBetween(min, max);
-    }
-
-    public Optional<List<Property>> getByType(String type) {
-        return propertyRepository.getByType(type);
+    public Optional<List<Property>> filter(Double price, String city, String type, Integer capacity, Integer nRooms) {
+        return propertyRepository.filter(price, city, type, capacity, nRooms);
     }
 
     public Property save(Property property) {
         return propertyRepository.save(property);
+    }
+
+    public Property updateState(int propertyId, String availability) {
+        return getById(propertyId).map(existingProperty -> {
+            existingProperty.setAvailability(availability);
+            return propertyRepository.save(existingProperty);
+        }).orElseThrow(() -> new RuntimeException("Property not found"));
+    }
+
+    public Property update(int propertyId, Property property) {
+        return getById(propertyId).map(existingProperty -> {
+            property.setPropertyId(propertyId);
+            return propertyRepository.save(property);
+        }).orElseThrow(() -> new RuntimeException("Property not found"));
     }
 
     public boolean delete(int propertyId) {

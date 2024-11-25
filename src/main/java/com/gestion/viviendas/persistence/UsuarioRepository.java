@@ -22,37 +22,9 @@ public class UsuarioRepository implements UserRepository {
     private UserMapper mapper;
 
     @Override
-    public List<User> getAll() {
-        List<Usuario> usuarios = (List<Usuario>) usuarioCrudRepository.findAll();
-        return mapper.toUsers(usuarios);
-    }
-
-    @Override
-    public boolean existsByTelefonoAndContraseña(String phone, String password) {
-        return usuarioCrudRepository.existsByTelefonoAndContraseña(phone, password);
-    }
-
-    @Override
-    public Optional<User> getById(int userId) {
-        return usuarioCrudRepository.findById(userId).map(user -> mapper.toUser(user));
-    }
-
-    @Override
-    public Optional<List<User>> findByNombreOrApellido(String name, String lastName) {
-        List<Usuario> usuarios = usuarioCrudRepository.findByNombreOrApellido(name, lastName);
-        return Optional.of(mapper.toUsers(usuarios));
-    }
-
-    @Override
-    public Optional<User> getByDni(String dni) {
-        Usuario usuario = usuarioCrudRepository.findByDni(dni);
-        return Optional.of(mapper.toUser(usuario));
-    }
-
-    @Override
-    public Optional<List<User>> getByRol(RolUser rol) {
-        List<Usuario> usuarios = usuarioCrudRepository.findByRol(rol);
-        return Optional.of(mapper.toUsers(usuarios));
+    public Optional<User> findByUserNameAndPassword(String userName, String password) {
+        Optional<Usuario> usuario = usuarioCrudRepository.findByNombreUsuarioAndContraseña(userName, password);
+        return usuario.map(mapper::toUser);
     }
 
     @Override
@@ -62,7 +34,16 @@ public class UsuarioRepository implements UserRepository {
     }
 
     @Override
-    public void delete(int userId) {
-        usuarioCrudRepository.deleteById(userId);
+    public Optional<User> getByNombreUsuarioAndContraseña(String nombreUsuario, String contraseña) {
+        // Buscar usuario por nombre de usuario y contraseña
+        Optional<Usuario> usuario = usuarioCrudRepository.findByNombreUsuarioAndContraseña(nombreUsuario, contraseña);
+        return usuario.map(mapper::toUser); // Convertir de entidad a DTO
+    }
+
+    @Override
+    public Optional<User> getById(int userId) {
+        // Buscar usuario por ID
+        Optional<Usuario> usuario = usuarioCrudRepository.findById(userId);
+        return usuario.map(mapper::toUser); // Convertir de entidad a DTO
     }
 }

@@ -3,6 +3,7 @@ package com.gestion.viviendas.web.controller;
 import com.gestion.viviendas.domain.Property;
 import com.gestion.viviendas.domain.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +17,12 @@ public class PropertyController {
     private PropertyService propertyService;
 
     @GetMapping("/all")
-    public List<Property> getAll(){
+    public List<Property> getAll() {
         return propertyService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Property> getById(@PathVariable("id") int idProperty){
+    public Optional<Property> getById(@PathVariable("id") int idProperty) {
         return propertyService.getById(idProperty);
     }
 
@@ -30,22 +31,29 @@ public class PropertyController {
         return propertyService.getByUser(userId);
     }
 
-    @GetMapping("/capacity")
-    public Optional<List<Property>> getByCapacityBetween(
-            @RequestParam("min") int minCapacity,
-            @RequestParam("max") int maxCapacity
-    ) {
-        return propertyService.getByCapacityBetween(minCapacity, maxCapacity);
-    }
-
-    @GetMapping("/type/{type}")
-    public Optional<List<Property>> getByType(@PathVariable("type") String type) {
-        return propertyService.getByType(type);
+    @GetMapping("/filter")
+    public Optional<List<Property>> filter(
+            @Param("price") Double price,
+            @Param("city") String city,
+            @Param("type") String type,
+            @Param("capacity") Integer capacity,
+            @Param("nRooms") Integer nRooms) {
+        return propertyService.filter(price, city, type, capacity, nRooms);
     }
 
     @PostMapping("/")
     public Property save(@RequestBody Property property) {
         return propertyService.save(property);
+    }
+
+    @PutMapping("/{id}")
+    public Property update(@PathVariable("id") int idProperty, @RequestBody Property property) {
+        return propertyService.update(idProperty, property);
+    }
+
+    @PutMapping("/estado/{estado}/{id}")
+    public Property update(@PathVariable("id") int idProperty, @PathVariable("estado") String availibilty) {
+        return propertyService.updateState(idProperty, availibilty);
     }
 
     @DeleteMapping("/{id}")
