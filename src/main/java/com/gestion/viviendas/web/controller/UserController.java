@@ -20,19 +20,15 @@ public class UserController {
     private UserService userService;
 
     // Iniciar sesión
-    @PostMapping("/login")
-    public ResponseEntity<User> iniciarSesion(@RequestBody Map<String, String> credentials) {
-        // Extraer los campos del mapa
-        String userName = credentials.get("userName");
-        String password = credentials.get("password");
-
+    @GetMapping("/login")
+    public ResponseEntity<User> iniciarSesion(@RequestParam("username") String username, @RequestParam("password") String password) {
         // Validar que ambos campos estén presentes
-        if (userName == null || password == null) {
+        if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
             return ResponseEntity.badRequest().build();
         }
 
         // Usar el servicio para verificar las credenciales
-        Optional<User> userFromDb = userService.iniciarSesion(userName, password);
+        Optional<User> userFromDb = userService.iniciarSesion(username, password);
 
         // Retornar el usuario o un error 401 si no se encuentran las credenciales
         return userFromDb.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(401).build());
