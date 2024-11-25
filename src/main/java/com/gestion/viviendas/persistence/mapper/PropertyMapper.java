@@ -15,10 +15,10 @@ public interface PropertyMapper {
     @Mappings({
             @Mapping(source = "idPropiedad", target = "propertyId"),
             @Mapping(source = "idUsuario", target = "userId"),
-            @Mapping(source = "nroTitulo", target = "nTitle"),
+            @Mapping(source = "titulo", target = "title"),
             @Mapping(source = "descripcion", target = "description"),
             @Mapping(source = "ciudad", target = "city"),
-            @Mapping(source = "ubicacion", target = "ubication"),
+            @Mapping(source = "direccion", target = "direction"),
             @Mapping(source = "precio", target = "price"),
             @Mapping(source = "disponibilidad", target = "availability"),
             @Mapping(source = "imagen", target = "image"),
@@ -28,6 +28,8 @@ public interface PropertyMapper {
             @Mapping(source = "caractAdicionales", target = "additioFeatures"),
             @Mapping(source = "usuario", target = "user"),
     })
+
+    @Mapping(source = "usuario.idUsuario", target = "userId")
 
     Property toProperty(Propiedad propiedad);
     List<Property> toProperties(List<Propiedad> propiedades);

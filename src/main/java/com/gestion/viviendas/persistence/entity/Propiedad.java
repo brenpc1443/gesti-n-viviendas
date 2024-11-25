@@ -18,16 +18,15 @@ public class Propiedad {
     @Column(name = "id_usuario")
     private Integer idUsuario;
 
-    @Column(name = "nro_titulo")
-    private String nroTitulo;
+    private String titulo;
 
     private String descripcion;
 
     private String ciudad;
 
-    private String ubicacion;
+    private String direccion;
 
-    private Boolean precio;
+    private double precio;
 
     private String disponibilidad;
 
@@ -67,12 +66,12 @@ public class Propiedad {
         this.idUsuario = idUsuario;
     }
 
-    public String getNroTitulo() {
-        return nroTitulo;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNroTitulo(String nroTitulo) {
-        this.nroTitulo = nroTitulo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getDescripcion() {
@@ -91,19 +90,19 @@ public class Propiedad {
         this.ciudad = ciudad;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public Boolean getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Boolean precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

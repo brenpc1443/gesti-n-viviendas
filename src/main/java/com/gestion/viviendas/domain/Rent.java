@@ -7,9 +7,9 @@ public class Rent {
     private int rentId;
     private int userId;
     private int propertyId;
-    private double cost;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private String proofImage;
     private User user;
     private Property property;
 
@@ -37,14 +37,6 @@ public class Rent {
         this.propertyId = propertyId;
     }
 
-    public double getCost() {
-        return cost;
-    }
-
-    public void setCost(double cost) {
-        this.cost = cost;
-    }
-
     public LocalDateTime getStartDate() {
         return startDate;
     }
@@ -60,6 +52,10 @@ public class Rent {
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
+
+    public String getProofImage() {return proofImage;}
+
+    public void setProofImage(String proofImage) {this.proofImage = proofImage;}
 
     public User getUser() {
         return user;
