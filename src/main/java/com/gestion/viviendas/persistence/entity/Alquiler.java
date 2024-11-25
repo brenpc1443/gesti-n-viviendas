@@ -22,13 +22,14 @@ public class Alquiler {
     @Column(name = "id_propiedad")
     private Integer idPropiedad;
 
-    private Double costo;
-
     @Column(name = "fecha_inicio")
     private LocalDateTime fechaInicio;
 
     @Column(name = "fecha_fin")
     private LocalDateTime fechaFin;
+
+    @Column(name = "imagen_comprobante")
+    private String imagenComprobante;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
@@ -64,14 +65,6 @@ public class Alquiler {
         this.idPropiedad = idPropiedad;
     }
 
-    public Double getCosto() {
-        return costo;
-    }
-
-    public void setCosto(Double costo) {
-        this.costo = costo;
-    }
-
     public LocalDateTime getFechaFin() {
         return fechaFin;
     }
@@ -86,6 +79,12 @@ public class Alquiler {
 
     public void setFechaInicio(LocalDateTime fechaInicio) {
         this.fechaInicio = fechaInicio;
+    }
+
+    public String getImagenComprobante() {return imagenComprobante;}
+
+    public void setImagenComprobante(String imagenComprobante) {
+        this.imagenComprobante = imagenComprobante;
     }
 
     public Usuario getUsuario() {

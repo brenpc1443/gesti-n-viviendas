@@ -4,10 +4,10 @@ public class Property {
 
     private int propertyId;
     private int userId;
-    private String nTitle;
+    private String title;
     private String description;
     private String city;
-    private String ubication;
+    private String direction;
     private double price;
     private String availability;
     private String image;
@@ -33,12 +33,11 @@ public class Property {
         this.userId = userId;
     }
 
-    public String getnTitle() {
-        return nTitle;
+    public String getTitle() {
+        return title;
     }
-
-    public void setnTitle(String nTitle) {
-        this.nTitle = nTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -57,12 +56,12 @@ public class Property {
         this.city = city;
     }
 
-    public String getUbication() {
-        return ubication;
+    public String getDirection() {
+        return direction;
     }
 
-    public void setUbication(String ubication) {
-        this.ubication = ubication;
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 
     public double getPrice() {
