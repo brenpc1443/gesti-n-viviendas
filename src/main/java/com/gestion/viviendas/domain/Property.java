@@ -8,7 +8,7 @@ public class Property {
     private String description;
     private String city;
     private String ubication;
-    private Boolean price;
+    private double price;
     private String availability;
     private String image;
     private String type;
@@ -65,11 +65,11 @@ public class Property {
         this.ubication = ubication;
     }
 
-    public Boolean getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Boolean price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

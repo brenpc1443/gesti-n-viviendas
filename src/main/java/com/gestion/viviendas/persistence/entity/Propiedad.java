@@ -27,7 +27,7 @@ public class Propiedad {
 
     private String ubicacion;
 
-    private Boolean precio;
+    private double precio;
 
     private String disponibilidad;
 
@@ -99,11 +99,11 @@ public class Propiedad {
         this.ubicacion = ubicacion;
     }
 
-    public Boolean getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Boolean precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
