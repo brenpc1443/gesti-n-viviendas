@@ -12,12 +12,12 @@ public interface PropiedadCrudRepository extends CrudRepository<Propiedad, Integ
 
     List<Propiedad> findByIdUsuario(int idUsuario);
 
-    @Query("SELECT p FROM PROPIEDAD p WHERE " +
+    @Query("SELECT p FROM Propiedad p WHERE " +
             "(:precio IS NULL OR p.precio <= :precio) AND " +
             "(:ciudad IS NULL OR p.ciudad = :ciudad) AND " +
             "(:tipo IS NULL OR p.tipo = :tipo) AND " +
             "(:capacidad IS NULL OR p.capacidad >= :capacidad) AND " +
-            "(:nro_habitaciones IS NULL OR p.nro_habitaciones = :nro_habitaciones)")
+            "(:nroHabitaciones IS NULL OR p.nroHabitaciones = :nroHabitaciones)")
     List<Propiedad> filter(
             Double precio,
             String ciudad,
