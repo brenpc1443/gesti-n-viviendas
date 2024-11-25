@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+
 @Entity
 @Table(name = "USUARIO")
 public class Usuario {
@@ -18,22 +19,22 @@ public class Usuario {
 
     private String apellido;
 
-    private String dni;
+    @Column(name = "nombre_usuario")
+    private String nombreUsuario;
 
     private String telefono;
 
-    private String direccion;
-
     private String contraseña;
 
-    @Enumerated(EnumType.STRING)
-    private RolUser rol;
+    //@Enumerated(EnumType.STRING)
+    //private RolUser rol;
 
     @OneToMany(mappedBy = "usuario")
     private List<Propiedad> propiedades;
 
     @OneToMany(mappedBy = "usuario")
     private List<Alquiler> alquileres;
+
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -59,12 +60,12 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getDni() {
-        return dni;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario; // Corrigiendo el error
     }
 
     public String getTelefono() {
@@ -75,21 +76,13 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
+    //public RolUser getRol() {
+    //    return rol;
+    //}
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public RolUser getRol() {
-        return rol;
-    }
-
-    public void setRol(RolUser rol) {
-        this.rol = rol;
-    }
+    //public void setRol(RolUser rol) {
+    //    this.rol = rol;
+    //}
 
     public String getContraseña() {
         return contraseña;

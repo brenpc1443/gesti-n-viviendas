@@ -39,6 +39,13 @@ public class RentService {
         return rentRepository.save(rent);
     }
 
+    public Rent update(int rentId, Rent rent){
+        return getById(rentId).map(existingRent -> {
+            rent.setRentId(rentId);
+            return rentRepository.save(rent);
+        }).orElseThrow(() -> new RuntimeException("Rent not found"));
+    }
+
     public boolean delete(int rentId){
         return getById(rentId).map(rent -> {
             rentRepository.delete(rentId);
