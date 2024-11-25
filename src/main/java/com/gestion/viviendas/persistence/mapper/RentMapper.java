@@ -29,3 +29,4 @@ public interface RentMapper {
     @InheritInverseConfiguration
     Alquiler toAlquiler(Rent rent);
 }
+
