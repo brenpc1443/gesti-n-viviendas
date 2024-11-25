@@ -23,15 +23,25 @@ public class Propiedad {
 
     private String descripcion;
 
-    private String direccion;
+    private String ciudad;
+
+    private String ubicacion;
+
+    private Boolean precio;
 
     private String disponibilidad;
 
+    private String imagen;
+
     private String tipo;
 
-    private String estado;
-
     private Integer capacidad;
+
+    @Column(name = "nro_habitaciones")
+    private Integer nroHabitaciones;
+
+    @Column(name = "caract_adicionales")
+    private String caractAdicionales;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
@@ -73,20 +83,28 @@ public class Propiedad {
         this.descripcion = descripcion;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getCiudad() {
+        return ciudad;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public Boolean getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Boolean precio) {
+        this.precio = precio;
     }
 
     public String getDisponibilidad() {
@@ -97,12 +115,20 @@ public class Propiedad {
         this.disponibilidad = disponibilidad;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public Integer getCapacidad() {
@@ -111,6 +137,22 @@ public class Propiedad {
 
     public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
+    }
+
+    public Integer getNroHabitaciones() {
+        return nroHabitaciones;
+    }
+
+    public void setNroHabitaciones(Integer nroHabitaciones) {
+        this.nroHabitaciones = nroHabitaciones;
+    }
+
+    public String getCaractAdicionales() {
+        return caractAdicionales;
+    }
+
+    public void setCaractAdicionales(String caractAdicionales) {
+        this.caractAdicionales = caractAdicionales;
     }
 
     public Usuario getUsuario() {

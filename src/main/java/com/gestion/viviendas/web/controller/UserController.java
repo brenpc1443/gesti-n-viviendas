@@ -5,6 +5,7 @@ import com.gestion.viviendas.domain.repository.UserRepository;
 import com.gestion.viviendas.domain.service.UserService;
 import com.gestion.viviendas.persistence.type.RolUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
