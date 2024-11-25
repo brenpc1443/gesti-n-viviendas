@@ -4,7 +4,7 @@ public class Property {
 
     private int propertyId;
     private int userId;
-    private String nTitle;
+    private String nroTitle;
     private String description;
     private String direction;
     private String availability;
@@ -29,12 +29,11 @@ public class Property {
         this.userId = userId;
     }
 
-    public String getnTitle() {
-        return nTitle;
+    public String getNroTitle() {
+        return nroTitle;
     }
-
-    public void setnTitle(String nTitle) {
-        this.nTitle = nTitle;
+    public void setNroTitle(String nroTitle) {
+        this.nroTitle = nroTitle;
     }
 
     public String getDescription() {

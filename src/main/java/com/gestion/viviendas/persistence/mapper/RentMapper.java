@@ -16,9 +16,9 @@ public interface RentMapper {
             @Mapping(source = "idAlquiler", target = "rentId"),
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "idPropiedad", target = "propertyId"),
-            @Mapping(source = "costo", target = "cost"),
             @Mapping(source = "fechaInicio", target = "startDate"),
             @Mapping(source = "fechaFin", target = "endDate"),
+            @Mapping(source = "imagenComprobante", target = "proofImage"),
             @Mapping(source = "usuario", target = "user"),
             @Mapping(source = "propiedad", target = "property"),
     })
